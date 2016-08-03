@@ -9,12 +9,19 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+# These are extensions that must be enabled in order to support this database
+enable_extension "plpgsql"
+
+ActiveRecord::Schema.define(version: 20160803222950) do
+  create_table "leagues", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "number_of_rounds", default: 5
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+end
 
 ActiveRecord::Schema.define(version: 20160803223732) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "competitors", force: :cascade do |t|
     t.string   "name"
     t.integer  "wins_count"
@@ -23,5 +30,5 @@ ActiveRecord::Schema.define(version: 20160803223732) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
 end
+
