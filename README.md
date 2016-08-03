@@ -18,6 +18,8 @@ Provides Admin User the interface to assign players to the given leagues and ent
 * Rails version: Rails 5.0.0
 * Database: PostgreSQL 9.4.1
 
+https://travis-ci.org/cherchezlafemme/competition-tracker.svg?branch=master
+
 ###We can add the following info as we go:
 * Installation
 
