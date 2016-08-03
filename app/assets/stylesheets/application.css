@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+/* {
+  outline: 1px solid red;
+}*/
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%
+}
+
+.content-container {
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#index-title {
+  margin: auto;
+}
+
+#table-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.league-table {
+  border-collapse: collapse;
+}
+
+#league-A-container {
+  margin: 20px 50px;
+  float: left;
+  width: 40%;
+  border-collapse: collapse;
+}
+
+#league-B-container {
+  margin: 20px 50px;
+  float: right;
+  width: 40%;
+}
+
+#table-container, td {
+  border: 1px solid #888888;
+}
