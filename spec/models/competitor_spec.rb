@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Competitor, type: :model do
   describe 'Model Competitor' do
-    let (:evee) { Competitor.create( {name: "Evee"} )}
-    let (:invalid_player) { Competitor.create( {name: ""} )}
+    let (:league_one) { League.create( {name: "Super Pokemon"} ) }
+    let (:evee) { league_one.competitors.create( {name: "Evee"} )}
+    let (:invalid_player) { league_one.competitors.create( {name: ""} )}
+    let (:no_league_player) { Competitor.create( {name: "Cool guy"} )}
 
     it 'has a name' do
       expect(evee.name).to eq "Evee"
@@ -27,11 +29,15 @@ RSpec.describe Competitor, type: :model do
       it 'is not valid without a name' do
         expect(invalid_player).to be_invalid
       end
-      it 'is not valid without a league'
+      it 'is not valid without a league' do
+        expect(no_league_player).to be_invalid
+      end
     end
 
     context 'associations' do
-      it 'belongs to one specific league'
+      it 'belongs to one specific league' do
+        expect(evee.league.name).to eq "Super Pokemon"
+      end
       it 'participates in many different matches'
     end
   end

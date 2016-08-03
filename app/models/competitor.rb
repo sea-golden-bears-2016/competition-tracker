@@ -8,7 +8,5 @@ class Competitor < ApplicationRecord
       self.wins_count = 0
   end
 
-  validates_presence_of :name
-
-#need to add validates assignment to the league once we have league model
+  validates_presence_of :name, :league_id
 end
