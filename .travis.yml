@@ -7,7 +7,7 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database competition-tracker_test;' -U postgres
+  - psql -c 'create database competition_tracker_test;' -U postgres
 
 
 
