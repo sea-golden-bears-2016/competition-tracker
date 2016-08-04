@@ -11,37 +11,13 @@ class Competitor < ApplicationRecord
 
   validates_presence_of :name, :league_id
 
-
   def results
-
-    p rounds_competitor_has_this_league
-
-    {
-     r1: 'w',
-     r2: 'l',
-     r3: 'w',
-     r5: 'w'
-    }
+    self.matches.reduce({}) do |results_hash, match|
+      value = match.winner == self ? 'w' : 'l'
+      round_symbol = :"r#{match.round_number}"
+      results_hash[round_symbol] = value
+      results_hash
+    end
   end
-
-  def rounds_list
-    self.matches.first
-  end
-
-
-  def winner?
-
-
-  end
-
-  def loser?
-
-  end
-
-  def rounds_competitor_has_this_league
-    self.league.rounds_for_the_league
-  end
-
-
 
 end

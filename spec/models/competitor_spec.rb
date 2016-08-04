@@ -27,15 +27,21 @@ RSpec.describe Competitor, type: :model do
     end
 
     it 'has results for all the rounds' do
-      league_one = League.create( {name: "Super Pokemon"} )
-      eevee_po = league_one.competitors.create( {name: "Eevee"} )
-      ponyata_po = league_one.competitors.create( {name: "Ponyata"} )
-      good_params = { round_number: 7, winner: eevee_po, loser: ponyata_po, league: league_one }
-      good_match = Match.new(good_params)
+      league_one = League.create!( {name: "Super Pokemon"} )
+      eevee_po = league_one.competitors.create!( {name: "Eevee"} )
+      ponyata_po = league_one.competitors.create!( {name: "Ponyata"} )
+      good_match = league_one.matches.create!({round_number: 4})
+      good_match.competitors << [ eevee_po, ponyata_po ]
+      good_match.winner = eevee_po
+      good_match.loser = ponyata_po
+      good_match.save
 
-      expect(eevee_po.results).to eq({r7: 'w'})
+      expect(league_one.matches).to include good_match
 
-
+      expect(good_match.competitors).to eq [ eevee_po, ponyata_po ]
+      expect(ponyata_po.reload.matches.count).to eq 1
+      expect(good_match.winner).to eq eevee_po
+      expect(eevee_po.results).to eq({r4: 'w'})
     end
 
     context 'validations' do
