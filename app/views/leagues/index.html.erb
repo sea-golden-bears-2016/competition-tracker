@@ -27,11 +27,7 @@
             <% @league1.number_of_rounds.times do |round| %>
 
               <td class="col-width">
-              <% if competitor.results.key?(:"r#{round + 1}") %>
-                <%= competitor.results[:"r#{round + 1}"] %>
-              <% else %>
-                -
-              <% end %>
+                <%= competitor.results[:"r#{round + 1}"] || '-' %>
               </td>
 
             <% end %>
@@ -45,7 +41,7 @@
   </div>
 
   <div id="league-B-container">
-    <h3><%= @league1.name %></h3>
+    <h3><%= @league2.name %></h3>
     <table class="league-table">
       <thead>
         <tr>
@@ -65,12 +61,12 @@
             <td class="competitor-name">
             <%= competitor.name %>
             </td>
-            <% i = 0 %>
-            <% while i < @league2.number_of_rounds do %>
+            <% @league1.number_of_rounds.times do |round| %>
+
               <td class="col-width">
-                -
-                <% i += 1 %>
+                <%= competitor.results[:"r#{round + 1}"] || '-' %>
               </td>
+
             <% end %>
             <td>
               <%= competitor.wins_count %>
