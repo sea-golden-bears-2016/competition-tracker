@@ -1,4 +1,13 @@
 language: ruby
 rvm:
-  - 2.2.0
+  - 2.2.5
+bundle_args: --without production
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database competition-tracker_test;' -U postgres
+
+
 
