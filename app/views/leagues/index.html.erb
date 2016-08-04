@@ -1,6 +1,4 @@
-<h1 id="index-title">Seattle Karate Leagues</h1>
-
-<h3>Current Standings</h3>
+<h1>Current Standings</h1>
 
 <div id="table-container">
   <div id="league-A-container">
@@ -11,11 +9,11 @@
           <th>Player</th>
             <% i = 0 %>
             <% while i < @league1.number_of_rounds do %>
-            <th class="col-width">
+            <th class="col-details">
               <%= i += 1 %>
             </th>
             <% end %>
-          <th>Wins</th>
+          <th class="col-details">Wins</th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +24,7 @@
             </td>
             <% @league1.number_of_rounds.times do |round| %>
 
-              <td class="col-width">
+              <td class="col-details">
                 <%= competitor.results[:"r#{round + 1}"] || '-' %>
               </td>
 
@@ -48,11 +46,11 @@
           <th>Player</th>
             <% i = 0 %>
             <% while i < @league2.number_of_rounds do %>
-            <th class="col-width">
+            <th class="col-details">
               <%= i += 1 %>
             </th>
             <% end %>
-          <th>Wins</th>
+          <th class="col-details">Wins</th>
         </tr>
       </thead>
       <tbody>
@@ -63,7 +61,7 @@
             </td>
             <% @league1.number_of_rounds.times do |round| %>
 
-              <td class="col-width">
+              <td class="col-details">
                 <%= competitor.results[:"r#{round + 1}"] || '-' %>
               </td>
 
