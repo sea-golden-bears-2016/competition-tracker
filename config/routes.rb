@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy]
     resource :dashboard, only: [:show]
     resources :leagues, only: [:show, :update] do
-      resources :competitors, only: [:create]
+      resources :competitors, only: [:create, :destroy]
     end
   end
 end
