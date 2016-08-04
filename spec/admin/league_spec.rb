@@ -23,4 +23,5 @@ feature "admin league update page" do
     click_link('Return to Dashboard')
     expect(current_path).to eq admin_dashboard_path
   end
+
 end
