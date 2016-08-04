@@ -47,8 +47,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
 end
 
 group :production do

@@ -24,7 +24,7 @@ feature "admin league update" do
     expect(current_path).to eq admin_dashboard_path
   end
 
-  it 'can update the number of rounds in a season', :js => true do
+  it 'can update the number of rounds in a season' do
     visit admin_dashboard_path
     fill_in 'new-number-of-rounds', with: '7'
     click_button('Update number of rounds')
