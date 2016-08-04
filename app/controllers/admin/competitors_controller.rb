@@ -6,6 +6,13 @@ class Admin::CompetitorsController < ApplicationController
     redirect_to admin_league_path(@league)
   end
 
+  def destroy
+    @league = League.find(params[:league_id])
+    competitor = Competitor.find(params[:id])
+    competitor.destroy
+    redirect_to admin_league_path(@league)
+  end
+
   private
 
   def competitor_form_params
