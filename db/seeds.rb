@@ -20,3 +20,6 @@ end
   })
   competitor.save
 end
+
+User.create(username: "admin", password: "secret")
+
