@@ -5,43 +5,45 @@
 
   <div id="league-A-container">
     <h3>League A</h3>
-    <tbody class="league-table">
-      <tr>
-        <td>Player</td>
-      </tr>
-      <tr>
-        <td>Andrew</td>
-      </tr>
-      <tr>
-        <td>Anya</td>
-      </tr>
-      <tr>
-        <td>Jake</td>
-      </tr>
-      <tr>
-        <td>Ed</td>
-      </tr>
-    </tbody>
+    <table class="league-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>
+            <% i = 0 %>
+            <% while i < @league1.number_of_rounds do %>
+              <%= i += 1 %>
+            <% end %>
+          </th>
+        </tr>
+
+        <% @league1.competitors.all.each do |competitor| %>
+          <tr>
+            <td>
+            <%= competitor.name %>
+            </td>
+          </tr>
+        <% end %>
+
+      </thead>
+    </table>
   </div>
 
   <div id="league-B-container">
     <h3>League B</h3>
-    <tbody class="league-table">
-      <tr>
-        <td>Player</td>
-      </tr>
-      <tr>
-        <td>Andrew</td>
-      </tr>
-      <tr>
-        <td>Anya</td>
-      </tr>
-      <tr>
-        <td>Jake</td>
-      </tr>
-      <tr>
-        <td>Ed</td>
-      </tr>
-    </tbody>
+    <table class="league-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>
+            <% i = 0 %>
+            <% while i < @league1.number_of_rounds do %>
+              <%= i += 1 %>
+            <% end %>
+          </th>
+        </tr>
+
+      </thead>
+    </table>
   </div>
 

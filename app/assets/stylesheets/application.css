@@ -40,6 +40,7 @@ body {
 
 .league-table {
   border-collapse: collapse;
+  border: 1px solid #888888;
 }
 
 #league-A-container {
@@ -55,6 +56,3 @@ body {
   width: 40%;
 }
 
-#table-container, td {
-  border: 1px solid #888888;
-}

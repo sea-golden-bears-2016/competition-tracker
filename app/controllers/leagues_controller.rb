@@ -1,5 +1,6 @@
 class LeaguesController < ApplicationController
   def index
-    @leagues = League.all
+    @league1 = League.all.first
+    @league2 = League.all.last
   end
 end
