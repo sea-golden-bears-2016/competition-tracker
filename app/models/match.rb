@@ -10,4 +10,8 @@ class Match < ApplicationRecord
 
   validates_presence_of :league_id
 
+  scope :won_by, -> ( winner ){ where(winner: winner) }
+
+  scope :lost_by, -> ( loser ){ where(loser: loser) }
+
 end
