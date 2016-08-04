@@ -13,6 +13,9 @@ class Competitor < ApplicationRecord
 
 
   def results
+
+    p rounds_competitor_has_this_league
+
     {
      r1: 'w',
      r2: 'l',
@@ -20,6 +23,25 @@ class Competitor < ApplicationRecord
      r5: 'w'
     }
   end
+
+  def rounds_list
+    self.matches.first
+  end
+
+
+  def winner?
+
+
+  end
+
+  def loser?
+
+  end
+
+  def rounds_competitor_has_this_league
+    self.league.rounds_for_the_league
+  end
+
 
 
 end

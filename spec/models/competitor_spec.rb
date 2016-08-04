@@ -7,6 +7,7 @@ RSpec.describe Competitor, type: :model do
     let (:invalid_player) { league_one.competitors.create( {name: ""} )}
     let (:no_league_player) { Competitor.create( {name: "Cool guy"} )}
 
+
     it 'has a name' do
       expect(evee.name).to eq "Evee"
     end
@@ -23,6 +24,18 @@ RSpec.describe Competitor, type: :model do
     it 'tells you the count of the matches that he/she lost' do
       evee.loses_count = 1
       expect(evee.loses_count).to eq 1
+    end
+
+    it 'has results for all the rounds' do
+      league_one = League.create( {name: "Super Pokemon"} )
+      eevee_po = league_one.competitors.create( {name: "Eevee"} )
+      ponyata_po = league_one.competitors.create( {name: "Ponyata"} )
+      good_params = { round_number: 7, winner: eevee_po, loser: ponyata_po, league: league_one }
+      good_match = Match.new(good_params)
+
+      expect(eevee_po.results).to eq({r7: 'w'})
+
+
     end
 
     context 'validations' do
