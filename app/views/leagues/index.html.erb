@@ -23,13 +23,20 @@
           <tr>
             <td class="competitor-name">
             <%= competitor.name %>
+            <%= competitor.results %>
             </td>
             <% i = 0 %>
             <% while i < @league1.number_of_rounds do %>
-              <td class="col-width">
-                -
+                <% winner = @league1.matches.first.winner.name %>
+                <% loser = @league1.matches.first.loser.name %>
+                <% if loser %>
+                  <td class="col-width">l</td>
+                <% elsif winner %>
+                  <td class="col-width">w</td>
+                <% else %>
+                  <td class="col-width">-</td>
+                <% end %>
                 <% i += 1 %>
-              </td>
             <% end %>
             <td>
               <%= competitor.wins_count %>
