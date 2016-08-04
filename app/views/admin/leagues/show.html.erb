@@ -1,0 +1,22 @@
+<h1>Update <%= @league.name %></h1>
+
+<%= form_for admin_league_path(@league), method: :put do |form| %>
+
+<% if @league.errors.any? %>
+  <div>
+    <ul>
+    <% @league.errors.each do |attribute, message| %>
+      <li><%= message[:message] %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.submit "Update League Name" %>
+
+<% end %>
+
+<%= link_to "Return to Dashboard", admin_dashboard_path %>
