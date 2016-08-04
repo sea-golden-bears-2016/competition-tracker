@@ -1,6 +1,7 @@
 class Competitor < ApplicationRecord
   belongs_to :league
-  has_many :matches
+  has_and_belongs_to_many :matches
+
   after_initialize :init
 
   def init

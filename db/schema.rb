@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803223732) do
+ActiveRecord::Schema.define(version: 20160804003105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20160803223732) do
     t.integer  "league_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["league_id"], name: "index_competitors_on_league_id", using: :btree
+  end
+
+  create_table "competitors_matches", force: :cascade do |t|
+    t.integer "competitor_id"
+    t.integer "match_id"
+    t.index ["competitor_id"], name: "index_competitors_matches_on_competitor_id", using: :btree
+    t.index ["match_id"], name: "index_competitors_matches_on_match_id", using: :btree
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -29,6 +37,18 @@ ActiveRecord::Schema.define(version: 20160803223732) do
     t.integer  "number_of_rounds", default: 5
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "round_number"
+    t.integer  "winner_id"
+    t.integer  "loser_id"
+    t.integer  "league_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["league_id"], name: "index_matches_on_league_id", using: :btree
+    t.index ["loser_id"], name: "index_matches_on_loser_id", using: :btree
+    t.index ["winner_id"], name: "index_matches_on_winner_id", using: :btree
   end
 
 end
