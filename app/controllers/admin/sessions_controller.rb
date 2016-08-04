@@ -9,7 +9,7 @@ class Admin::SessionsController < ApplicationController
 
     if @login_form.authenticated?
       session[:user_id] = @login_form.user.id
-      redirect_to '/'
+      redirect_to '/admin/dashboard'
     else
       render 'admin/sessions/new'
     end

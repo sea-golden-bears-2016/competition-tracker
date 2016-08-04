@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'leagues#index'
 
   namespace :admin do
-    resource :session, only: [:new, :create]
+    resource :session, only: [:new, :create, :destroy]
     resource :dashboard, only: [:show]
   end
 end
