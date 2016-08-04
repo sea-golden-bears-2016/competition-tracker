@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20160804232411) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["league_id"], name: "index_matches_on_league_id", using: :btree
-    t.index ["loser_id"], name: "index_matches_on_loser_id", using: :btree
     t.index ["winner_id"], name: "index_matches_on_winner_id", using: :btree
   end
 

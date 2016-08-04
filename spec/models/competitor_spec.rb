@@ -4,44 +4,52 @@ RSpec.describe Competitor, type: :model do
   describe 'Model Competitor' do
     let (:league_one) { League.create( {name: "Super Pokemon"} ) }
     let (:evee) { league_one.competitors.create( {name: "Evee"} )}
+    let (:eevee_po) { league_one.competitors.create!( {name: "Eevee"} ) }
+    let (:ponyata_po) { league_one.competitors.create!( {name: "Ponyata"} ) }
     let (:invalid_player) { league_one.competitors.create( {name: ""} )}
     let (:no_league_player) { Competitor.create( {name: "Cool guy"} )}
+    let (:good_match) { league_one.matches.create!({round_number: 4}) }
 
 
     it 'has a name' do
       expect(evee.name).to eq "Evee"
     end
     it 'sets default value of the wins to 0' do
-      expect(evee.wins_count).to eq 0
+      expect(evee.wins.count).to eq 0
     end
     it 'sets default value of the loses to 0' do
-      expect(evee.loses_count).to eq 0
-    end
-    it 'tells you the count of the matches that he/she won' do
-      evee.wins_count = 2
-      expect(evee.wins_count).to eq 2
-    end
-    it 'tells you the count of the matches that he/she lost' do
-      evee.loses_count = 1
-      expect(evee.loses_count).to eq 1
+      expect(evee.losses.count).to eq 0
     end
 
-    it 'has results for all the rounds' do
-      league_one = League.create!( {name: "Super Pokemon"} )
-      eevee_po = league_one.competitors.create!( {name: "Eevee"} )
-      ponyata_po = league_one.competitors.create!( {name: "Ponyata"} )
-      good_match = league_one.matches.create!({round_number: 4})
-      good_match.competitors << [ eevee_po, ponyata_po ]
-      good_match.winner = eevee_po
-      good_match.loser = ponyata_po
-      good_match.save
+    context 'creating a match with a specific competitors and looking up the results' do
+      before (:each) do
+        good_match.competitors << [ eevee_po, ponyata_po ]
+        good_match.winner = eevee_po
+        good_match.loser = ponyata_po
+        good_match.save
+      end
+      it 'can be assign to a specific match as a competitors in it' do
+        expect(good_match.competitors).to eq [ eevee_po, ponyata_po ]
+      end
+      it 'has a number of the matches played changed to 1 once the competitor gets enrolled in a match' do
+        expect(ponyata_po.reload.matches.count).to eq 1
+      end
+      it 'is a winner of the match after being assigned a winning position' do
+        expect(good_match.winner).to eq eevee_po
+      end
+      it 'has a number of wins changed to 1 if the competitor has won the match' do
+        expect(eevee_po.wins.count).to eq 1
+      end
+      it 'has a number of losses changed to 1 if the competitor has lost the match' do
+        expect(ponyata_po.losses.count).to eq 1
+      end
+      it 'has "w" as a result value for the round in the competitor won the match in this given round' do
+        expect(eevee_po.results).to eq({r4: 'w'})
+      end
+      it 'has "l" as a result value for the round in the competitor lost the match in this given round' do
+        expect(ponyata_po.results).to eq({r4: 'l'})
+      end
 
-      expect(league_one.matches).to include good_match
-
-      expect(good_match.competitors).to eq [ eevee_po, ponyata_po ]
-      expect(ponyata_po.reload.matches.count).to eq 1
-      expect(good_match.winner).to eq eevee_po
-      expect(eevee_po.results).to eq({r4: 'w'})
     end
 
     context 'validations' do
