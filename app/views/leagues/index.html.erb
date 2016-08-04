@@ -9,23 +9,30 @@
       <thead>
         <tr>
           <th>Player</th>
-          <th>
             <% i = 0 %>
             <% while i < @league1.number_of_rounds do %>
+            <th>
               <%= i += 1 %>
+            </th>
             <% end %>
-          </th>
+          <th>Wins</th>
         </tr>
-
+      </thead>
+      <tbody>
         <% @league1.competitors.all.each do |competitor| %>
           <tr>
             <td>
             <%= competitor.name %>
             </td>
+            <% i = 0 %>
+            <% while i < @league1.number_of_rounds do %>
+            <td>
+              <%= i += 1 %>
+            </td>
+            <% end %>
           </tr>
         <% end %>
-
-      </thead>
+      </tbody>
     </table>
   </div>
 
@@ -37,13 +44,22 @@
           <th>Player</th>
           <th>
             <% i = 0 %>
-            <% while i < @league1.number_of_rounds do %>
+            <% while i < @league2.number_of_rounds do %>
               <%= i += 1 %>
             <% end %>
           </th>
+          <th>Wins</th>
         </tr>
-
       </thead>
+      <tbody>
+        <% @league2.competitors.all.each do |competitor| %>
+          <tr>
+            <td>
+            <%= competitor.name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 

@@ -1,7 +1,7 @@
 League.create(name: 'League A')
 League.create(name: 'League B')
 
-5.times do
+4.times do
   competitor = Competitor.new({
     :name => Faker::Name.name,
     :wins_count => 0,
@@ -11,7 +11,7 @@ League.create(name: 'League B')
   competitor.save
 end
 
-5.times do
+4.times do
   competitor = Competitor.new({
     :name => Faker::Name.name,
     :wins_count => 0,
