@@ -1,0 +1,23 @@
+<h1>Admin Log in</h1>
+
+<%= form_for @login_form, url: {action: 'create'} do |form| %>
+
+<% if @login_form.errors.any? %>
+  <div>
+    <ul>
+    <% @login_form.errors.each do |attribute, message| %>
+      <li><%= message[:message] %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form.label :username %>
+<%= form.text_field :username %>
+
+<%= form.label :password %>
+<%= form.password_field :password %>
+
+<%= form.submit "Log In" %>
+
+<% end %>
