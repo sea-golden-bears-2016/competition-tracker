@@ -10,4 +10,16 @@ class Competitor < ApplicationRecord
   end
 
   validates_presence_of :name, :league_id
+
+
+  def results
+    {
+     r1: 'w',
+     r2: 'l',
+     r3: 'w',
+     r5: 'w'
+    }
+  end
+
+
 end

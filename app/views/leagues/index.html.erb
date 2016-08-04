@@ -2,16 +2,16 @@
 
 <h3>Current Standings</h3>
 
-
+<div id="table-container">
   <div id="league-A-container">
-    <h3>League A</h3>
+    <h3><%= @league1.name %></h3>
     <table class="league-table">
       <thead>
         <tr>
           <th>Player</th>
             <% i = 0 %>
             <% while i < @league1.number_of_rounds do %>
-            <th>
+            <th class="col-width">
               <%= i += 1 %>
             </th>
             <% end %>
@@ -21,15 +21,26 @@
       <tbody>
         <% @league1.competitors.all.each do |competitor| %>
           <tr>
-            <td>
+            <td class="competitor-name">
             <%= competitor.name %>
+            <%= competitor.results %>
             </td>
             <% i = 0 %>
             <% while i < @league1.number_of_rounds do %>
-            <td>
-              <%= i += 1 %>
-            </td>
+                <% winner = @league1.matches.first.winner.name %>
+                <% loser = @league1.matches.first.loser.name %>
+                <% if loser %>
+                  <td class="col-width">l</td>
+                <% elsif winner %>
+                  <td class="col-width">w</td>
+                <% else %>
+                  <td class="col-width">-</td>
+                <% end %>
+                <% i += 1 %>
             <% end %>
+            <td>
+              <%= competitor.wins_count %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -37,29 +48,42 @@
   </div>
 
   <div id="league-B-container">
-    <h3>League B</h3>
+    <h3><%= @league1.name %></h3>
     <table class="league-table">
       <thead>
         <tr>
           <th>Player</th>
-          <th>
             <% i = 0 %>
             <% while i < @league2.number_of_rounds do %>
+            <th class="col-width">
               <%= i += 1 %>
+            </th>
             <% end %>
-          </th>
           <th>Wins</th>
         </tr>
       </thead>
       <tbody>
         <% @league2.competitors.all.each do |competitor| %>
           <tr>
-            <td>
+            <td class="competitor-name">
             <%= competitor.name %>
+            </td>
+            <% i = 0 %>
+            <% while i < @league2.number_of_rounds do %>
+              <td class="col-width">
+                -
+                <% i += 1 %>
+              </td>
+            <% end %>
+            <td>
+              <%= competitor.wins_count %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
+
   </div>
+</div>
 

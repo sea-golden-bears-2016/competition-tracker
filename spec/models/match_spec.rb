@@ -5,8 +5,8 @@ RSpec.describe Match, type: :model do
     let (:league_one) { League.create( {name: "Super Pokemon"} ) }
     let (:eevee) { league_one.competitors.create( {name: "Eevee"} ) }
     let (:ponyata) { league_one.competitors.create( {name: "Ponyata"} ) }
-    let (:good_params) { { round_number: 7, winner: eevee, loser: ponyata, league: league_one } }
-    let (:good_match) {Match.create!(good_params)}
+    let (:good_params) { { round_number: 7, winner: eevee, loser: ponyata, league_id: league_one.id } }
+    let! (:good_match) {Match.new(good_params)}
 
     it 'has a round_number' do
       expect(good_match.round_number).to eq 7
@@ -28,7 +28,7 @@ RSpec.describe Match, type: :model do
         expect(good_match).to be_valid
       end
 
-      it 'is not valid without a league' do
+      it 'is not valid without a league_id' do
         invalid_params_without_league = { round_number: 7, winner: eevee, loser: ponyata }
         invalid_match = Match.create( invalid_params_without_league )
         expect(invalid_match).to be_invalid
