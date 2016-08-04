@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :session, only: [:new, :create, :destroy]
     resource :dashboard, only: [:show]
-    resources :leagues, only: [:show, :update]
+    resources :leagues, only: [:show, :update] do
+      resources :competitors, only: [:create]
+    end
   end
 end

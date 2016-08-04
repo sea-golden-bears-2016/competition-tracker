@@ -14,7 +14,7 @@
 <% end %>
 
 <%= form.label :name %>
-<%= form.text_field :name %>
+<%= form.text_field :name, id: "league_name" %>
 
 <%= form.submit "Update League Name" %>
 
@@ -28,7 +28,12 @@
       <%= content_tag(:li, competitor.name) %>
       <% end %>
   <% end %>
-  <%= button_to
+
+  <%= form_for :competitor, url: "/admin/leagues/#{@league.id}/competitors" do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: "competitor_name" %>
+    <%= form.submit "Add Competitor" %>
+  <% end %>
 </div>
 
 
