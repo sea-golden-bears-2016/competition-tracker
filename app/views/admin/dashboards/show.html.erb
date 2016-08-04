@@ -1,3 +1,24 @@
 <h1>Greetings, Commissioner</h1>
 
 <%= link_to "logout", '/admin/session', method: :delete %>
+
+<div id="dashboard-league">
+  <div class="league-column">
+    <p><%= @league1.name %></p>
+    <%= content_tag(:ul) do %>
+      <% @league1.competitors.each do |competitor| %>
+        <%= content_tag(:li, competitor.name) %>
+        <% end %>
+    <% end %>
+    <%= button_to "Update #{@league1.name}", admin_league_path(@league1), method: :get %>
+  </div>
+  <div class="league-column">
+    <p><%= @league2.name %></p>
+    <%= content_tag(:ul) do %>
+      <% @league2.competitors.each do |competitor| %>
+        <%= content_tag(:li, competitor.name) %>
+        <% end %>
+    <% end %>
+    <%= button_to "Update #{@league2.name}", admin_league_path(@league2), method: :get %>
+  </div>
+</div>
