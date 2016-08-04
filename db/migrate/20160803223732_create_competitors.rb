@@ -4,7 +4,8 @@ class CreateCompetitors < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :wins_count
       t.integer :loses_count
-      t.integer :league_id
+
+      t.references :league, index: true
 
       t.timestamps
     end

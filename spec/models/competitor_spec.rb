@@ -32,13 +32,14 @@ RSpec.describe Competitor, type: :model do
       it 'is not valid without a league' do
         expect(no_league_player).to be_invalid
       end
+      it 'can only participate in one match per specific round'
     end
 
     context 'associations' do
       it 'belongs to one specific league' do
         expect(evee.league.name).to eq "Super Pokemon"
       end
-      it 'participates in many different matches'
+      it 'participates in number of matches that is equal to the number of rounds of the league'
     end
   end
 end
