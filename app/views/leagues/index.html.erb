@@ -1,0 +1,65 @@
+<h1 id="index-title">Seattle Karate Leagues</h1>
+
+<h3>Current Standings</h3>
+
+
+  <div id="league-A-container">
+    <h3>League A</h3>
+    <table class="league-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+            <% i = 0 %>
+            <% while i < @league1.number_of_rounds do %>
+            <th>
+              <%= i += 1 %>
+            </th>
+            <% end %>
+          <th>Wins</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league1.competitors.all.each do |competitor| %>
+          <tr>
+            <td>
+            <%= competitor.name %>
+            </td>
+            <% i = 0 %>
+            <% while i < @league1.number_of_rounds do %>
+            <td>
+              <%= i += 1 %>
+            </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="league-B-container">
+    <h3>League B</h3>
+    <table class="league-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>
+            <% i = 0 %>
+            <% while i < @league2.number_of_rounds do %>
+              <%= i += 1 %>
+            <% end %>
+          </th>
+          <th>Wins</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league2.competitors.all.each do |competitor| %>
+          <tr>
+            <td>
+            <%= competitor.name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
