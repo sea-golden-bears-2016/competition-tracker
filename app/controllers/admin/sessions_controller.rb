@@ -11,7 +11,7 @@ class Admin::SessionsController < ApplicationController
       session[:user_id] = @login_form.user.id
       redirect_to '/'
     else
-      render 'session/new'
+      render 'admin/sessions/new'
     end
 
   end
