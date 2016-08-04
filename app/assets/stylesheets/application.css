@@ -56,3 +56,20 @@ body {
   width: 40%;
 }
 
+/*----- ADMIN DASHBOARD ------*/
+
+#dashboard-league {
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.league-column {
+  display: inline-block;
+  width: 200px;
+  padding: 5px;
+}
+
+.league-column li {
+  text-align: left;
+}
