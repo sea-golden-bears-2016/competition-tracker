@@ -46,6 +46,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :production do
