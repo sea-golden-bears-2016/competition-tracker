@@ -94,3 +94,23 @@ tr:nth-child(even) {
 .league-column li {
   text-align: left;
 }
+
+/*----- ADMIN UPDATE LEAGUE ------*/
+
+#update-league-name {
+  margin: 5px;
+}
+
+#update-league-players {
+  display: inline-block;
+  margin: 5px;
+}
+
+#update-league-players li {
+  text-align: left;
+}
+
+#to-dashboard {
+  margin: 5px;
+}
+

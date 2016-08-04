@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "admin league update page" do
+feature "admin league update" do
   let!(:league1) { League.create(name: "League 1") }
   let!(:league2) { League.create(name: "League 2") }
 
@@ -9,7 +9,7 @@ feature "admin league update page" do
 
     click_button 'Update League 1'
 
-    fill_in 'Name', with: 'butts'
+    fill_in 'league_name', with: 'butts'
 
     click_button('Update League Name')
 

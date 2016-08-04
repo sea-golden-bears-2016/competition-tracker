@@ -1,5 +1,6 @@
 <h1>Update <%= @league.name %></h1>
 
+<div id="update-league-name">
 <%= form_for admin_league_path(@league), method: :put do |form| %>
 
 <% if @league.errors.any? %>
@@ -13,10 +14,29 @@
 <% end %>
 
 <%= form.label :name %>
-<%= form.text_field :name %>
+<%= form.text_field :name, id: "league_name" %>
 
 <%= form.submit "Update League Name" %>
 
 <% end %>
+</div>
 
+<div id="update-league-players">
+<h2>Current Players:</h2>
+  <%= content_tag(:ul) do %>
+    <% @league.competitors.each do |competitor| %>
+      <%= content_tag(:li, competitor.name) %>
+      <% end %>
+  <% end %>
+
+  <%= form_for :competitor, url: "/admin/leagues/#{@league.id}/competitors" do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: "competitor_name" %>
+    <%= form.submit "Add Competitor" %>
+  <% end %>
+</div>
+
+
+<div id="to-dashboard">
 <%= link_to "Return to Dashboard", admin_dashboard_path %>
+</div>
