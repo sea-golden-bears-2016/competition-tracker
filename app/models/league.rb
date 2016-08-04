@@ -3,4 +3,5 @@ class League < ApplicationRecord
   has_many :competitors
 
   validates :name, :number_of_rounds, presence: true
+
 end
