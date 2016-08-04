@@ -8,7 +8,6 @@ class Match < ApplicationRecord
   scope :from_round, ->(round_number) { where(round_number: round_number) }
 
 
-  validates_presence_of :league
+  validates_presence_of :league_id
 
-  attr_reader :winner
 end
