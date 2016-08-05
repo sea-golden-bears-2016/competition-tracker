@@ -1,10 +1,21 @@
 <h1>Greetings, Commissioner</h1>
 
+<div id="logout">
 <%= link_to "Logout", '/admin/session', method: :delete, :id => 'logout-link' %>
+</div>
 
-<h2>Current Leagues:</h2>
+<div id="update-rounds">
+  <h2>Rounds this season:</h2>
+  <p id="rounds"><%= @league1.number_of_rounds %> rounds</p>
+  <%= form_for admin_dashboard_path, method: :put do |form| %>
+    <%= form.label :rounds %>
+    <%= form.text_field :rounds, id: 'new-number-of-rounds' %>
+    <%= form.submit "Update number of rounds", :class => 'submit-buttons' %>
+  <% end %>
+</div>
 
 <div id="dashboard-league">
+<h2>Current Leagues:</h2>
   <div class="league-column">
     <h3><%= @league1.name %></h3>
     <%= content_tag(:ul) do %>
@@ -25,12 +36,18 @@
   </div>
 </div>
 
-<div id="update-rounds">
-  <h2>Rounds this season:</h2>
-  <p id="rounds"><%= @league1.number_of_rounds %> rounds</p>
-  <%= form_for admin_dashboard_path, method: :put do |form| %>
-    <%= form.label :rounds %>
-    <%= form.text_field :rounds, id: 'new-number-of-rounds' %>
-    <%= form.submit "Update number of rounds", :class => 'submit-buttons' %>
-  <% end %>
+<div id="leader-board">
+<h2>Current Leaders:</h2>
+  <div class="league-column">
+  <%= @league1.current_leader.name %>
+  <p>Wins: <%= @league1.current_leader.wins.count %></p>
+  </div>
+  <div class="league-column">
+  <%= @league2.current_leader.name %>
+  <p>Wins: <%= @league2.current_leader.wins.count %></p>
+  </div>
 </div>
+
+<%= link_to "Homepage", root_path, :class => 'submit-buttons' %>
+
+
