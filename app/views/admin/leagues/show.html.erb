@@ -25,14 +25,20 @@
   <h2>Current Players:</h2>
   <%= content_tag(:ul) do %>
     <% @league.competitors.each do |competitor| %>
-      <%= content_tag(:li, competitor.name) %>
-      <li>
-        <%= button_to "Delete Competitor", admin_league_competitor_path(@league, competitor), method: :delete, id: "delete-#{competitor.id}", :class => 'submit-buttons' %>
-      </li>
+      <%= content_tag(:li) do %>
+        <%= content_tag(:div, competitor.name) %>
+
+        <%= form_for competitor, url: admin_league_competitor_path(@league, competitor) do |form| %>
+          <%= form.text_field :name, id: "update_competitor" %>
+          <%= form.submit "Rename", :class => 'submit-buttons' %>
+        <% end %>
+
+        <%= button_to "Delete", admin_league_competitor_path(@league, competitor), method: :delete, id: "delete-#{competitor.id}", :class => 'submit-buttons' %>
       <% end %>
+    <% end %>
   <% end %>
 
-  <%= form_for :competitor, url: "/admin/leagues/#{@league.id}/competitors" do |form| %>
+  <%= form_for :competitor, url: admin_league_competitors_path(@league) do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name, id: "competitor_name" %>
     <%= form.submit "Add Competitor", :class => 'submit-buttons' %>
