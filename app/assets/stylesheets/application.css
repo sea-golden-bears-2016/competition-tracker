@@ -159,6 +159,15 @@ footer {
   border-radius: 10px;
 }
 
+#logout {
+  margin: 20px;
+}
+
+#return {
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
 #dashboard-link {
   color: #fff5ba;
   background-color: #6e1519;
