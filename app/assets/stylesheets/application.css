@@ -21,18 +21,31 @@
 body {
   margin: 0px;
   padding: 0px;
-  width: 100%
+  width: 100%;
+  font-family: Tahoma, sans-serif;
+}
+
+#main-header {
+  font-family: Papyrus, sans-serif;
+  font-size: 2.5em;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-bottom-left-radius: 3em;
+  border-bottom-right-radius: 3em;
+  background-color: #fff5ba;
+}
+
+#index-title {
+  color: #00402c;
 }
 
 .content-container {
   margin: auto;
-  width: 60%;
+  width: 80%;
   text-align: center;
   margin-top: 100px;
-}
-
-#index-title {
-  margin: auto;
 }
 
 #table-container {
@@ -50,34 +63,70 @@ body {
 }
 
 th {
-  background-color: #aef9ae;
+  color: #fff5ba;
+  background-color: #00402c;
 }
 
 tr:nth-child(even) {
   background-color: #dbdddc;
 }
 
-.col-width {
-  width: 20px;
+.col-details {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
 }
 
 .competitor-name {
   text-align: left;
+  padding: 5px;
 }
 
 #league-A-container {
   margin: 20px auto;
   float: left;
-  width: 40%;
+  width: 45%;
 }
 
 #league-B-container {
   margin: 20px auto;
   float: right;
-  width: 40%;
+  width: 45%;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer {
+  text-align: center;
 }
 
 /*----- ADMIN DASHBOARD ------*/
+
+#main-login-form {
+  text-align: left;
+  width: 60%;
+  margin: auto;
+}
+
+.login-form-field input {
+  display: block;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+#login-submit {
+  width: 150px;
+  height: 25px;
+  background-color: #fff5ba;
+  color: #6e1519;
+  border-radius: 10px;
+  font-weight: bold;
+}
 
 #dashboard-league {
   padding: 5px;
