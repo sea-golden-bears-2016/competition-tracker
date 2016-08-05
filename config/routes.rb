@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show, :update]
     resources :leagues, only: [:show, :update] do
       resources :competitors, only: [:create, :destroy, :update]
+      resources :matches, only: [:new, :create]
     end
   end
 end

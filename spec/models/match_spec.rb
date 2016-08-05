@@ -5,8 +5,21 @@ RSpec.describe Match, type: :model do
     let (:league_one) { League.create( {name: "Super Pokemon"} ) }
     let (:eevee) { league_one.competitors.create( {name: "Eevee"} ) }
     let (:ponyata) { league_one.competitors.create( {name: "Ponyata"} ) }
-    let (:good_params) { { round_number: 7, winner: eevee, loser: ponyata, league_id: league_one.id } }
-    let! (:good_match) {Match.new(good_params)}
+    let (:good_params) do
+      {
+        round_number: 7,
+        league_id: league_one.id,
+        competitor_one_id: eevee.id,
+        competitor_two_id: ponyata.id,
+        winner: eevee,
+        loser: ponyata
+      }
+    end
+
+    let (:good_match) do
+      Match.create!(good_params)
+    end
+
 
     it 'has a round_number' do
       expect(good_match.round_number).to eq 7
@@ -16,10 +29,6 @@ RSpec.describe Match, type: :model do
     end
     it 'tells you the name of the competitor who lost after the match is done' do
       expect(good_match.loser).to eq ponyata
-    end
-    it 'has two competitors per match' do
-      good_match.competitors << [eevee, ponyata]
-      expect(good_match.competitors.length).to eq 2
     end
 
     context 'validations' do
