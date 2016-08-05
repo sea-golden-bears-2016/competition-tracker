@@ -1,5 +1,7 @@
 <h1>Admin Log in</h1>
 
+<%= session.delete(:flash) if session[:flash] %>
+
 <%= form_for @login_form, url: {action: 'create'} do |form| %>
 
 <% if @login_form.errors.any? %>

@@ -1,4 +1,4 @@
-class Admin::LeaguesController < ApplicationController
+class Admin::LeaguesController < AdminController
 
   def show
     @league = League.find(params[:id])
