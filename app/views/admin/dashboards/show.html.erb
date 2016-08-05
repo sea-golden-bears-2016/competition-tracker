@@ -42,12 +42,12 @@
 <div id="leader-board">
 <h2>Current Leaders:</h2>
   <div class="league-column">
-  <%= @league1.current_leader.name %>
-  <p>Wins: <%= @league1.current_leader.wins.count %></p>
+  <%= @league1.current_leader.try(:name) %>
+  <p>Wins: <% if @league1.current_leader.try(:wins) %><%= @league1.current_leader.wins.count %><% end %></p>
   </div>
   <div class="league-column">
-  <%= @league2.current_leader.name %>
-  <p>Wins: <%= @league2.current_leader.wins.count %></p>
+  <%= @league2.current_leader.try(:name) %>
+  <p>Wins: <% if @league2.current_leader.try(:wins) %><%= @league2.current_leader.wins.count %><% end %></p>
   </div>
 </div>
 
