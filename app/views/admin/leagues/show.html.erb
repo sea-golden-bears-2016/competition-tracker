@@ -16,28 +16,28 @@
 <%= form.label :name %>
 <%= form.text_field :name, id: "league_name" %>
 
-<%= form.submit "Update League Name" %>
+<%= form.submit "Update League Name", :class => 'submit-buttons' %>
 
 <% end %>
 </div>
 
 <div id="update-league-players">
-<h2>Current Players:</h2>
+  <h2>Current Players:</h2>
   <%= content_tag(:ul) do %>
     <% @league.competitors.each do |competitor| %>
       <%= content_tag(:li, competitor.name) %>
-      <%= button_to "Delete Competitor", admin_league_competitor_path(@league, competitor), method: :delete, id: "delete-#{competitor.id}" %>
+      <%= button_to "Delete Competitor", admin_league_competitor_path(@league, competitor), method: :delete, id: "delete-#{competitor.id}", :class => 'submit-buttons' %>
       <% end %>
   <% end %>
 
   <%= form_for :competitor, url: "/admin/leagues/#{@league.id}/competitors" do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name, id: "competitor_name" %>
-    <%= form.submit "Add Competitor" %>
+    <%= form.submit "Add Competitor", :class => 'submit-buttons' %>
   <% end %>
 </div>
 
 
 <div id="to-dashboard">
-<%= link_to "Return to Dashboard", admin_dashboard_path %>
+<%= link_to "Return to Dashboard", admin_dashboard_path, :id => 'dashboard-link' %>
 </div>
