@@ -96,9 +96,8 @@ tr:nth-child(even) {
 
 footer {
   position: relative;
-  bottom: 0;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 100px;
   margin-bottom: 25px;
   clear: both;
 }
@@ -115,11 +114,14 @@ footer {
   margin: auto;
 }
 
+.login-form-field {
+  margin-bottom: 25px;
+}
+
 .login-form-field input {
   display: block;
   width: 100%;
   margin: auto;
-  margin-bottom: 30px;
 }
 
 .submit-buttons {
@@ -177,6 +179,14 @@ footer {
   border-radius: 10px;
 }
 
+.error-message {
+  color: #6e1519;
+  list-style: none;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 /*----- ADMIN UPDATE LEAGUE ------*/
 
 #update-league-name {
@@ -186,20 +196,18 @@ footer {
 #update-league-players {
   width: 50%;
   display: block;
-  margin: 5px;
-}
-
-#update-league-players ul {
-  display: inline-block;
+  margin: 5px auto;
 }
 
 #update-league-players li {
-  text-align: right;
+  display: inline-block;
+  width: 200px;
+  text-align: center;
   list-style: none;
+  margin-bottom: 20px;
 }
 
 #update-league-players button {
-  display: inline-block;
   vertical-align: top;
 }
 
@@ -207,3 +215,13 @@ footer {
   margin-top: 25px;
 }
 
+#create_match_form {
+  text-align: left;
+  width: 70%;
+  margin: auto;
+}
+
+.in_one_line_form {
+  display: inline-block;
+  width: 150px;
+}

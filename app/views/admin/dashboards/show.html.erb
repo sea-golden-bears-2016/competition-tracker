@@ -27,6 +27,7 @@
         <% end %>
     <% end %>
     <%= button_to "Update #{@league1.name}", admin_league_path(@league1), method: :get, :class => 'submit-buttons' %>
+     <%= button_to "Create a new match", new_admin_league_match_path(@league1), method: :get, :class => 'submit-buttons' %>
   </div>
   <div class="league-column">
     <h3><%= @league2.name %></h3>
@@ -36,6 +37,7 @@
         <% end %>
     <% end %>
     <%= button_to "Update #{@league2.name}", admin_league_path(@league2), method: :get, :class => 'submit-buttons' %>
+    <%= button_to "Create a new match", new_admin_league_match_path(@league2), method: :get, :class => 'submit-buttons' %>
   </div>
 </div>
 <hr>
