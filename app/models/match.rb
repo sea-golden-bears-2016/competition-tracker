@@ -19,7 +19,7 @@ class Match < ApplicationRecord
   validate :validate_competitors
 
   def validate_competitors
-    errors.add(:competitors, 'You must have two competitors') if competitors.size != 2
+    errors.add(:competitors, ': pick two to create a match') if competitors.size != 2
   end
 
   before_validation :load_competitors
