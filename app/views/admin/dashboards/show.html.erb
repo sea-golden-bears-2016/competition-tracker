@@ -1,11 +1,6 @@
-<h1>Greetings, Commissioner</h1>
+<%= render 'admin/homepage_logout_nav_bar' %>
 
-<div id="return">
-<%= button_to "Return to Homepage", root_path, method: :get, :class => 'submit-buttons' %>
-</div>
-<div id="logout">
-<%= link_to "Logout", '/admin/session', method: :delete, :id => 'logout-link' %>
-</div>
+<h1>Greetings, Commissioner</h1>
 <hr>
 <div id="update-rounds">
   <h2>Rounds this season:</h2>
