@@ -7,17 +7,26 @@
 
       <ul>
       <% @match.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="error-message"><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
   <%= form_for @match, url: {action: "create"}, html: {id: "create_match_form"} do |f| %>
-  <%= f.select :round_number, @round_options %>
-  <%= f.select :competitor_one_id, @competitor_options, {include_blank: 'None'} %>
-  <%= f.select :competitor_two_id, @competitor_options, {include_blank: 'None'} %>
+  <div>
+    <p class='in_one_line_form'><%= f.label :round_number%>:</p>
+    <p class='in_one_line_form'><%= f.select :round_number, @round_options %></p>
+  </div>
+  <div>
+    <p class='in_one_line_form'><%= f.label :first_competitor%>:</p>
+    <p class='in_one_line_form'><%= f.select :competitor_one_id, @competitor_options, {include_blank: 'None'} %></p>
+  </div>
+  <div>
+    <p class='in_one_line_form'><%= f.label :second_competitor%>:</p>
+    <p class='in_one_line_form'><%= f.select :competitor_two_id, @competitor_options, {include_blank: 'None'} %></p>
+  </div>
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Create Match", :class => 'submit-buttons', :id => 'create-match-button' %>
   <% end %>
 </div>

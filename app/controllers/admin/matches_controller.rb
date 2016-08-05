@@ -21,7 +21,7 @@ class Admin::MatchesController < AdminController
     end
 
     if @match.save
-      redirect_to @match
+      redirect_to '/admin/dashboard'
     else
       render :new
     end

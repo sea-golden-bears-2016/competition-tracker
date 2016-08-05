@@ -25,43 +25,26 @@ class Match < ApplicationRecord
   before_validation :load_competitors
 
   def load_competitors
-    competitors_to_remove = []
-    competitors_to_add = []
-    competitors_from_form = self.competitors
+    input = [self.competitor_one_id.to_i, self.competitor_two_id.to_i].uniq
+    current = self.competitors.map {|c| c.id}
 
-
-    if competitors_from_form.empty?
-      competitors_to_add = competitor_not_zero_id_to_add
-    elsif competitors_from_form.length == 1
-      competitors_to_add = competitor_not_present_to_add(competitors_from_form)
-    else
-      competitors_to_add = add_if_not_peresent(competitors_from_form)
+    add = input.reject do |i|
+      i == 0 || current.include?(i)
     end
-  end
 
-  def potential_competitors
-    [competitor_one_id, competitor_two_id]
-  end
-
-  def competitor_not_zero_id_to_add
-    if potential_competitors.include?(0)
-      potential_competitors.delete(0)
+    remove = current.reject do |i|
+      input.include?(i)
     end
-    potential_competitors
-  end
 
-  def competitor_not_present_to_add(competitors_from_form)
-    potential_competitors = competitor_not_zero_id_to_add
-      if competitors_from_form.include?(potential_competitors[0])
-        competitors_from_form.delete(potential_competitors[0])
-      end
-      competitors_from_form
-  end
+    remove.each do |competitor_id|
+      self.competitors -= [Competitor.find(competitor_id)]
+    end
 
-  def add_if_not_peresent(competitors_from_form)
-    competitors_from_form.delete(potential_competitors[0])
-    competitors_from_form.delete(potential_competitors[1])
-    competitors_from_form
+    add.each do |competitor_id|
+      self.competitors <<  Competitor.find(competitor_id)
+    end
+
+    true
   end
 
 end

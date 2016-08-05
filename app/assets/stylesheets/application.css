@@ -109,7 +109,7 @@ footer {
 
 /*----- ADMIN DASHBOARD ------*/
 
-#main-login-form, #create_match_form {
+#main-login-form {
   text-align: left;
   width: 60%;
   margin: auto;
@@ -198,3 +198,13 @@ footer {
   margin-top: 25px;
 }
 
+#create_match_form {
+  text-align: left;
+  width: 70%;
+  margin: auto;
+}
+
+.in_one_line_form {
+  display: inline-block;
+  width: 150px;
+}
