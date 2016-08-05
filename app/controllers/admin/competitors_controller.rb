@@ -1,4 +1,4 @@
-class Admin::CompetitorsController < ApplicationController
+class Admin::CompetitorsController < AdminController
 
   def create
     @league = League.find(params[:league_id])

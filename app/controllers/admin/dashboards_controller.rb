@@ -1,4 +1,4 @@
-class Admin::DashboardsController < ApplicationController
+class Admin::DashboardsController < AdminController
 
   def show
     @league1 = League.all.first
