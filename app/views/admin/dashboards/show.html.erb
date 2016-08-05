@@ -1,27 +1,27 @@
 <h1>Greetings, Commissioner</h1>
 
-<%= link_to "logout", '/admin/session', method: :delete %>
+<%= link_to "Logout", '/admin/session', method: :delete, :id => 'logout-link' %>
 
 <h2>Current Leagues:</h2>
 
 <div id="dashboard-league">
   <div class="league-column">
-    <p><%= @league1.name %></p>
+    <h3><%= @league1.name %></h3>
     <%= content_tag(:ul) do %>
       <% @league1.competitors.each do |competitor| %>
         <%= content_tag(:li, competitor.name) %>
         <% end %>
     <% end %>
-    <%= button_to "Update #{@league1.name}", admin_league_path(@league1), method: :get %>
+    <%= button_to "Update #{@league1.name}", admin_league_path(@league1), method: :get, :class => 'submit-buttons' %>
   </div>
   <div class="league-column">
-    <p><%= @league2.name %></p>
+    <h3><%= @league2.name %></h3>
     <%= content_tag(:ul) do %>
       <% @league2.competitors.each do |competitor| %>
         <%= content_tag(:li, competitor.name) %>
         <% end %>
     <% end %>
-    <%= button_to "Update #{@league2.name}", admin_league_path(@league2), method: :get %>
+    <%= button_to "Update #{@league2.name}", admin_league_path(@league2), method: :get, :class => 'submit-buttons' %>
   </div>
 </div>
 
@@ -31,6 +31,6 @@
   <%= form_for admin_dashboard_path, method: :put do |form| %>
     <%= form.label :rounds %>
     <%= form.text_field :rounds, id: 'new-number-of-rounds' %>
-    <%= form.submit "Update number of rounds" %>
+    <%= form.submit "Update number of rounds", :class => 'submit-buttons' %>
   <% end %>
 </div>

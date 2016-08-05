@@ -95,9 +95,11 @@ tr:nth-child(even) {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 #footer {
@@ -119,7 +121,7 @@ footer {
   margin-bottom: 30px;
 }
 
-#login-submit {
+.submit-buttons {
   width: 150px;
   height: 25px;
   background-color: #fff5ba;
@@ -130,7 +132,6 @@ footer {
 
 #dashboard-league {
   padding: 5px;
-  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -142,6 +143,28 @@ footer {
 
 .league-column li {
   text-align: left;
+  width: 200px;
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+#logout-link {
+  color: #fff5ba;
+  background-color: #6e1519;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  width: 50px;
+  border-radius: 10px;
+}
+
+#dashboard-link {
+  color: #fff5ba;
+  background-color: #6e1519;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 /*----- ADMIN UPDATE LEAGUE ------*/
@@ -151,15 +174,26 @@ footer {
 }
 
 #update-league-players {
-  display: inline-block;
+  width: 50%;
+  display: block;
   margin: 5px;
+}
+
+#update-league-players ul {
+  display: inline-block;
 }
 
 #update-league-players li {
-  text-align: left;
+  text-align: right;
+  list-style: none;
+}
+
+#update-league-players button {
+  display: inline-block;
+  vertical-align: top;
 }
 
 #to-dashboard {
-  margin: 5px;
+  margin-top: 25px;
 }
 
