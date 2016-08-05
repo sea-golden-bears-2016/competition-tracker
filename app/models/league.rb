@@ -11,4 +11,8 @@ class League < ApplicationRecord
     end
   end
 
+  def array_of_rounds_possible
+    Array (1..self.number_of_rounds)
+  end
+
 end
