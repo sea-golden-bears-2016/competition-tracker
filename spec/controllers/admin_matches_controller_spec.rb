@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe MatchesController do
+describe Admin::MatchesController do
   before(:each) do
     get :new
   end
