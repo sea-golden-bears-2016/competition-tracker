@@ -24,4 +24,14 @@ feature "admin league update" do
     expect(current_path).to eq admin_dashboard_path
   end
 
+  it 'can update the number of rounds in a season' do
+    visit admin_dashboard_path
+    fill_in 'new-number-of-rounds', with: '7'
+    click_button('Update number of rounds')
+    expect(current_path).to eq admin_dashboard_path
+    within '#rounds' do
+      expect(page).to have_content '7'
+    end
+  end
+
 end

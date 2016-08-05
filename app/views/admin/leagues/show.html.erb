@@ -26,6 +26,7 @@
   <%= content_tag(:ul) do %>
     <% @league.competitors.each do |competitor| %>
       <%= content_tag(:li, competitor.name) %>
+      <%= button_to "Delete Competitor", admin_league_competitor_path(@league, competitor), method: :delete, id: "delete-#{competitor.id}" %>
       <% end %>
   <% end %>
 
