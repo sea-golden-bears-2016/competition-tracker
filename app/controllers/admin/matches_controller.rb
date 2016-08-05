@@ -1,24 +1,17 @@
 class Admin::MatchesController < AdminController
+  include ApplicationHelper
 
   def new
-    @current_league = League.find(params['league_id'])
+    @current_league = current_league
     @match = @current_league.matches.new
-    @round_options = @current_league.array_of_rounds_possible
-
-    @competitor_options = @current_league.competitors.collect do |p|
-     [ p.name, p.id ]
-    end
+    options_for_form_new_match
 
   end
 
   def create
-    @current_league = League.find(params['league_id'])
+    @current_league = current_league
     @match = @current_league.matches.new(match_params)
-    @round_options = @current_league.array_of_rounds_possible
-
-    @competitor_options = @current_league.competitors.collect do |p|
-     [ p.name, p.id ]
-    end
+    options_for_form_new_match
 
     if @match.save
       redirect_to '/admin/dashboard'
