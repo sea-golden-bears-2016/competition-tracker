@@ -29,7 +29,7 @@
         <%= content_tag(:div, competitor.name) %>
 
         <%= form_for competitor, url: admin_league_competitor_path(@league, competitor) do |form| %>
-          <%= form.text_field :name, id: "competitor_name" %>
+          <%= form.text_field :name, id: "update_competitor" %>
           <%= form.submit "Rename", :class => 'submit-buttons' %>
         <% end %>
 
