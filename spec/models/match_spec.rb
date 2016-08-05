@@ -5,8 +5,11 @@ RSpec.describe Match, type: :model do
     let (:league_one) { League.create( {name: "Super Pokemon"} ) }
     let (:eevee) { league_one.competitors.create( {name: "Eevee"} ) }
     let (:ponyata) { league_one.competitors.create( {name: "Ponyata"} ) }
-    let (:good_params) { { round_number: 7, winner: eevee, loser: ponyata, league_id: league_one.id } }
-    let! (:good_match) {Match.new(good_params)}
+    let (:good_params) { { round_number: 7, league_id: league_one.id } }
+    let! (:good_match) do
+      Match.new(good_params).competitors << [eevee, ponyata]
+    end
+
 
     it 'has a round_number' do
       expect(good_match.round_number).to eq 7

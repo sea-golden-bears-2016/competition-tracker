@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 describe Admin::MatchesController do
+
+  let(:league) { League.create!(name: "Cool league") }
+  let(:admin) { User.create!(username: "CoolChick", password:'verysecret') }
+
   before(:each) do
-    get :new
+      controller.session[:user_id] = admin.id
   end
 
   describe "GET #new" do
 
     it 'responds with a status of 200' do
+      get :new,:league_id=> league.id
       expect(response.status).to eq(200)
     end
 
@@ -20,6 +25,7 @@ describe Admin::MatchesController do
   describe "POST #create" do
 
     it 'responds with a status of 200' do
+      post :create,:league_id=> league.id, match: {round_number: 1}
       expect(response.status).to eq(200)
     end
 
