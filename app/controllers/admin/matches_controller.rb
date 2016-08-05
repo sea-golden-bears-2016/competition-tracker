@@ -25,7 +25,15 @@ class Admin::MatchesController < AdminController
     else
       render :new
     end
+  end
 
+  def update
+    match = Match.find(params[:id])
+    match.winner = match.competitors.find(params[:competitor_id])
+    index = match.competitors.find_index(match.winner)
+    index == 0 ? match.loser = match.competitors[1] : match.loser = match.competitors[0]
+    match.update_attribute(:winner_id, match.winner.id)
+    match.update_attribute(:loser_id, match.loser.id)
   end
 
   private
