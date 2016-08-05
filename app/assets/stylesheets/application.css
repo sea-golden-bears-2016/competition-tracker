@@ -114,11 +114,14 @@ footer {
   margin: auto;
 }
 
+.login-form-field {
+  margin-bottom: 25px;
+}
+
 .login-form-field input {
   display: block;
   width: 100%;
   margin: auto;
-  margin-bottom: 30px;
 }
 
 .submit-buttons {
@@ -165,6 +168,14 @@ footer {
   text-decoration: none;
   padding: 5px;
   border-radius: 10px;
+}
+
+.error-message {
+  color: #6e1519;
+  list-style: none;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 /*----- ADMIN UPDATE LEAGUE ------*/
