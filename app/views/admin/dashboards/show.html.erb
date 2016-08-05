@@ -1,10 +1,24 @@
 <h1>Greetings, Commissioner</h1>
 
+<div id="return">
+<%= button_to "Return to Homepage", root_path, method: :get, :class => 'submit-buttons' %>
+</div>
+<div id="logout">
 <%= link_to "Logout", '/admin/session', method: :delete, :id => 'logout-link' %>
-
-<h2>Current Leagues:</h2>
-
+</div>
+<hr>
+<div id="update-rounds">
+  <h2>Rounds this season:</h2>
+  <p id="rounds"><%= @league1.number_of_rounds %> rounds</p>
+  <%= form_for admin_dashboard_path, method: :put do |form| %>
+    <%= form.label :rounds %>
+    <%= form.text_field :rounds, id: 'new-number-of-rounds' %>
+    <%= form.submit "Update number of rounds", :class => 'submit-buttons' %>
+  <% end %>
+</div>
+<hr>
 <div id="dashboard-league">
+<h2>Current Leagues:</h2>
   <div class="league-column">
     <h3><%= @league1.name %></h3>
     <%= content_tag(:ul) do %>
@@ -26,13 +40,16 @@
     <%= button_to "Create a new match", new_admin_league_match_path(@league2), method: :get, :class => 'submit-buttons' %>
   </div>
 </div>
-
-<div id="update-rounds">
-  <h2>Rounds this season:</h2>
-  <p id="rounds"><%= @league1.number_of_rounds %> rounds</p>
-  <%= form_for admin_dashboard_path, method: :put do |form| %>
-    <%= form.label :rounds %>
-    <%= form.text_field :rounds, id: 'new-number-of-rounds' %>
-    <%= form.submit "Update number of rounds", :class => 'submit-buttons' %>
-  <% end %>
+<hr>
+<div id="leader-board">
+<h2>Current Leaders:</h2>
+  <div class="league-column">
+  <%= @league1.current_leader.try(:name) %>
+  <p>Wins: <% if @league1.current_leader.try(:wins) %><%= @league1.current_leader.wins.count %><% end %></p>
+  </div>
+  <div class="league-column">
+  <%= @league2.current_leader.try(:name) %>
+  <p>Wins: <% if @league2.current_leader.try(:wins) %><%= @league2.current_leader.wins.count %><% end %></p>
+  </div>
 </div>
+
