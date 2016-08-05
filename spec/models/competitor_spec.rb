@@ -8,8 +8,20 @@ RSpec.describe Competitor, type: :model do
     let (:ponyata_po) { league_one.competitors.create!( {name: "Ponyata"} ) }
     let (:invalid_player) { league_one.competitors.create( {name: ""} )}
     let (:no_league_player) { Competitor.create( {name: "Cool guy"} )}
-    let (:good_match) { league_one.matches.create!({round_number: 4}) }
+    let (:good_params) do
+      {
+        round_number: 4,
+        league_id: league_one.id,
+        competitor_one_id: eevee_po.id,
+        competitor_two_id: ponyata_po.id,
+        winner: eevee_po,
+        loser: ponyata_po
+      }
+    end
 
+    let (:good_match) do
+      Match.create!(good_params)
+    end
 
     it 'has a name' do
       expect(evee.name).to eq "Evee"
@@ -22,14 +34,11 @@ RSpec.describe Competitor, type: :model do
     end
 
     context 'creating a match with a specific competitors and looking up the results' do
-      before (:each) do
-        good_match.competitors << [ eevee_po, ponyata_po ]
-        good_match.winner = eevee_po
-        good_match.loser = ponyata_po
-        good_match.save
-      end
+
+      before (:each) { good_match }
+
       it 'can be assign to a specific match as a competitors in it' do
-        expect(good_match.competitors).to eq [ eevee_po, ponyata_po ]
+        expect(good_match.competitors).to match_array [eevee_po, ponyata_po]
       end
       it 'has a number of the matches played changed to 1 once the competitor gets enrolled in a match' do
         expect(ponyata_po.reload.matches.count).to eq 1
