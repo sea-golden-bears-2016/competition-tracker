@@ -1,10 +1,16 @@
 module ApplicationHelper
 
-  # need a method that checks match results for a specific round
-    # returns competitor name for winner
-    # returns competitor name for loser
-    # returns arbitrary character if match not yet played
+def current_league
+  @current_league = League.find(params['league_id'])
+end
 
+def options_for_form_new_match
+    @round_options = @current_league.array_of_rounds_possible
+
+    @competitor_options = @current_league.competitors.collect do |p|
+     [ p.name, p.id ]
+    end
+end
 
 
 end

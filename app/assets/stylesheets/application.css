@@ -45,7 +45,7 @@ body {
   margin: auto;
   width: 80%;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 #table-container {
@@ -151,25 +151,6 @@ footer {
   margin-bottom: 15px;
 }
 
-#logout-link {
-  color: #fff5ba;
-  background-color: #6e1519;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 10px;
-  width: 50px;
-  border-radius: 10px;
-}
-
-#logout {
-  margin: 20px;
-}
-
-#return {
-  margin: 10px;
-  margin-bottom: 20px;
-}
-
 #dashboard-link {
   color: #fff5ba;
   background-color: #6e1519;
@@ -224,4 +205,19 @@ footer {
 .in_one_line_form {
   display: inline-block;
   width: 150px;
+}
+
+#nav-bar-admin {
+  display: block;
+  float: right;
+  clear: both;
+}
+
+#homepage, #dashboard, #logout {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+h1 {
+  clear: both;
 }
