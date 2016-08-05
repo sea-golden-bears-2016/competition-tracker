@@ -163,3 +163,7 @@ footer {
   margin: 5px;
 }
 
+#match-results {
+  display: block;
+  clear: both;
+}

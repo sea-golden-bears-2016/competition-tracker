@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'data_spec_helper'
 
 describe 'League' do
   let(:league) { League.new(name: "League 1") }
