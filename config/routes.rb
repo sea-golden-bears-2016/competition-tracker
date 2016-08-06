@@ -10,5 +10,8 @@ Rails.application.routes.draw do
       resources :competitors, only: [:create, :destroy, :update]
       resources :matches, only: [:new, :create]
     end
+    resources :competitors, only: [:show] do
+      resources :matches, only: [:update]
+    end
   end
 end

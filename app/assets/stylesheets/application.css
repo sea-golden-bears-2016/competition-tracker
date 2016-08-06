@@ -207,6 +207,12 @@ footer {
   width: 150px;
 }
 
+
+.match {
+  border-top: 1px solid gray;
+  margin-top: 10px;
+}
+
 #nav-bar-admin {
   display: block;
   float: right;
