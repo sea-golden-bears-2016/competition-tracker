@@ -35,6 +35,7 @@ body {
   border-bottom-left-radius: 3em;
   border-bottom-right-radius: 3em;
   background-color: #fff5ba;
+  display: block;
 }
 
 #index-title {
@@ -220,4 +221,13 @@ footer {
 
 h1 {
   clear: both;
+}
+
+#index-title {
+  display: inline-block;
+}
+
+#fish {
+  float: left;
+  display: inline-block;
 }
