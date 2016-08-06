@@ -29,12 +29,6 @@ feature "admin league update" do
     expect(page).to have_content 'butts'
   end
 
-  it 'can redirect to the dashboard' do
-    visit admin_league_path(league2)
-    click_link('Return to Dashboard')
-    expect(current_path).to eq admin_dashboard_path
-  end
-
   it 'can update the number of rounds in a season' do
     visit admin_dashboard_path
     fill_in 'new-number-of-rounds', with: '7'
