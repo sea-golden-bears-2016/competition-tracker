@@ -54,7 +54,6 @@
   <% @league1.matches.each do |match| %>
     <div class="match">
       <p>Round: <%= match.round_number %></p>
-      <p>Competitors:</p>
       <ul>
       <% match.competitors.each do |competitor| %>
         <li><%=competitor.name %>
@@ -77,7 +76,6 @@
   <% @league2.matches.each do |match| %>
     <div class="match">
       <p>Round: <%= match.round_number %></p>
-      <p>Competitors:</p>
       <ul>
       <% match.competitors.each do |competitor| %>
         <li><%=competitor.name %>

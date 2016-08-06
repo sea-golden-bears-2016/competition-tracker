@@ -27,6 +27,7 @@ class Admin::MatchesController < AdminController
     index == 0 ? match.loser = match.competitors[1] : match.loser = match.competitors[0]
     match.update_attribute(:winner_id, match.winner.id)
     match.update_attribute(:loser_id, match.loser.id)
+    redirect_to admin_dashboard_path
   end
 
   private

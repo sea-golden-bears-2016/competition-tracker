@@ -141,13 +141,14 @@ footer {
 
 .league-column {
   display: inline-block;
-  width: 200px;
+  width: 300px;
   padding: 5px;
+  vertical-align: top;
 }
 
 .league-column li {
   text-align: left;
-  width: 200px;
+  width: 300px;
   list-style: none;
   margin-bottom: 15px;
 }
